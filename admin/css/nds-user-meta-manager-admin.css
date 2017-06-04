@@ -1,0 +1,7 @@
+/**
+ * admin-specific css
+ */
+
+#nds-list-table .wp-list-table  #ID {
+        width:  10%;
+}
