@@ -1,0 +1,35 @@
+{
+  "name": "nuancedesignstudio/nds-user-meta-manager-plugin",
+  "description": "A simple plugin for WordPress User Meta Management using OOP constructs",
+  "keywords": ["wordpress", "nds-user-meta-manager", "nds"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Karan NA Gupta",
+      "homepage": "http://nuancedesignstudio.in"
+    }
+  ],  
+  "require": {
+        "nuancedesignstudio/nds-user-meta-manager": "1.0.0",
+        "composer/installers": "v1.0.7"
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "nuancedesignstudio/nds-user-meta-manager",        
+        "type": "wordpress-plugin",
+        "version": "1.0.0",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/nuancedesignstudio/nds-user-meta-manager/archive/v1.0.0.zip"
+        }
+      }
+    }
+  ],
+  "extra": {
+    "installer-paths": {
+        "wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
+    }
+  }
+}
