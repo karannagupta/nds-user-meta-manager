@@ -242,6 +242,18 @@ class Nds_User_List extends Nds_WP_List_Table {
            $this->items = self::get_users( $per_page, $current_page );  
             
         }
+
+       /**
+        * General Exit
+        *
+        * @since    1.0.0
+        * 
+        * @return void
+        */    
+        public function graceful_exit() {
+            exit;
+        }
+
         
        /**
         * Processes the actions triggered by the user
@@ -254,9 +266,13 @@ class Nds_User_List extends Nds_WP_List_Table {
             if ( 'nds_view_user_meta' === $this->current_action() ) {                
                 $nonce = esc_attr( $_REQUEST['_wpnonce'] );                            
                 
-                //verify the nonce                
-                //if ( ! wp_verify_nonce( $nonce, 'nds_view_user_meta' ) ) {
-                // using oop below instead of the statement above
+                /*
+                 * verify the nonce
+                 * 
+                 * use our oop based methods instead of the regular
+                 *if ( ! wp_verify_nonce( $nonce, 'nds_view_user_meta' ) )
+                 * 
+                 */
                 
                 if (! $this->nds_nonce->wp_verify_nonce_field($nonce, $this->current_action()) ) {
                     wp_die(__( 'Invalid nonce specified', $this->plugin->name ), __( 'Error', $this->plugin->name ), array(
@@ -266,15 +282,20 @@ class Nds_User_List extends Nds_WP_List_Table {
                         ));
                 }
                 else {
-                    self::nds_view_user_meta( absint( $_GET['nds_user']), $this->plugin_name );
-                    exit;
+                    $this->nds_view_user_meta( absint( $_GET['nds_user']), $this->plugin_name );
+                    $this->graceful_exit();
                 }
             }   
             
             if ( 'nds_add_user_meta' === $this->current_action() ) { 
                 $nonce = esc_attr( $_REQUEST['_wpnonce'] );
-                //verify the nonce
-                //if ( ! wp_verify_nonce( $nonce, 'nds_add_user_meta' ) ) {
+                /*
+                 * verify the nonce
+                 * 
+                 * use our oop based methods instead of the regular
+                 * if ( ! wp_verify_nonce( $nonce, 'nds_add_user_meta' ) )
+                 * 
+                 */
                 
                 if (! $this->nds_nonce->wp_verify_nonce_field($nonce, $this->current_action()) ) {
                     wp_die(__( 'Invalid nonce specified', $this->plugin->name ), __( 'Error', $this->plugin->name ), array(
@@ -283,16 +304,21 @@ class Nds_User_List extends Nds_WP_List_Table {
 
                         ));
                 }
-                else {                    
-                    self::nds_add_user_meta( absint( $_GET['nds_user']), $this->plugin_name );                                        
-                    exit;
+                else {                                        
+                    $this->nds_add_user_meta( absint( $_GET['nds_user']), $this->plugin_name );
+                    $this->graceful_exit();
                 }                
             }
             
             if ( 'nds_delete_user_meta' === $this->current_action() ) { 
                 $nonce = esc_attr( $_REQUEST['_wpnonce'] );
-                //verify the nonce
-                //if ( ! wp_verify_nonce( $nonce, 'nds_delete_user_meta' ) ) {
+                /*
+                 * verify the nonce
+                 * 
+                 * use our oop based methods instead of the regular
+                 * if ( ! wp_verify_nonce( $nonce, 'nds_delete_user_meta' ) )
+                 * 
+                 */
                 
                 if (! $this->nds_nonce->wp_verify_nonce_field($nonce, $this->current_action()) ) {
                     wp_die(__( 'Invalid nonce specified', $this->plugin->name ), __( 'Error', $this->plugin->name ), array(
@@ -302,8 +328,8 @@ class Nds_User_List extends Nds_WP_List_Table {
                         ));
                 }
                 else {                    
-                    self::nds_delete_user_meta( absint( $_GET['nds_user']), $this->plugin_name );                                        
-                    exit;
+                    $this->nds_delete_user_meta( absint( $_GET['nds_user']), $this->plugin_name );                                        
+                    $this->graceful_exit();
                 }                
             }            
         }        
@@ -316,7 +342,7 @@ class Nds_User_List extends Nds_WP_List_Table {
          * @param int $id customer ID
          * @param string $plugin_name
          */
-        public static function nds_view_user_meta( $user_id, $plugin_name ) {            
+        public function nds_view_user_meta( $user_id, $plugin_name ) {            
             $user = get_user_by( 'id', $user_id );
             echo __('<h2> View Meta for ' . $user->user_login . '</h2>');           
             include_once( plugin_dir_path( dirname( __DIR__ ) ) .'admin/partials/nds-user-meta-manager-admin-meta-view-display.php' );
@@ -330,7 +356,7 @@ class Nds_User_List extends Nds_WP_List_Table {
          * @param int $id customer ID  
          * @param string $plugin_name
          */
-        public static function nds_add_user_meta( $user_id, $plugin_name ) {            
+        public function nds_add_user_meta( $user_id, $plugin_name ) {            
             $user = get_user_by( 'id', $user_id );
             echo __('<h2> Add Meta for ' . $user->user_login . '</h2>');                        
             include_once( plugin_dir_path( dirname( __DIR__ ) ) .'admin/partials/nds-user-meta-manager-admin-meta-add-display.php' );
@@ -344,7 +370,7 @@ class Nds_User_List extends Nds_WP_List_Table {
          * @param int $id customer ID
          * @param string $plugin_name
          */
-        public static function nds_delete_user_meta( $user_id, $plugin_name ) {            
+        public function nds_delete_user_meta( $user_id, $plugin_name ) {            
             $user = get_user_by( 'id', $user_id );
             echo __('<h2> Delete Meta for ' . $user->user_login . '</h2>');                        
             include_once( plugin_dir_path( dirname( __DIR__ ) ) .'admin/partials/nds-user-meta-manager-admin-meta-delete-display.php' );

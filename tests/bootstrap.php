@@ -18,6 +18,12 @@ require_once $_tests_dir . '/includes/functions.php';
  */
 function _manually_load_plugin() {
 	require dirname( dirname( __FILE__ ) ) . '/nds-user-meta-manager.php';
+        
+        // Update array with plugins to include ...
+        $plugins_to_activate = array(
+            dirname( dirname( __FILE__ ) ) . '/nds-user-meta-manager.php'            
+        );
+        update_option( 'active_plugins', $plugins_to_activate );
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

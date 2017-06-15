@@ -194,7 +194,7 @@ class Nds_User_Meta_Manager_Admin {
         }       
         
         /**
-         * Callback for the add_options_page from function nds_add_plugin_admin_menu
+         * Callback for the add_users_page from function nds_add_plugin_admin_menu
          * 
          * @since    1.0.0
          */
@@ -203,7 +203,7 @@ class Nds_User_Meta_Manager_Admin {
         }
         
         /**
-         * Callback for the admin_post_nds_add_user_meta_form_response from partials/nds-user-meta-manager-admin-meta-delete-display
+         * Callback for the admin_post_nds_add_user_meta_form_response from partials/nds-user-meta-manager-admin-meta-add-display
          * 
          * @since    1.0.0
          */
