@@ -17,7 +17,7 @@ class Nds_User_Meta_Manager_Test extends WP_UnitTestCase {
     
     public function test_load_dependencies() {
         $plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
-        fwrite(STDOUT, "Testing Plugin Integrity ... \n");
+        fwrite(STDOUT, "\n\t\t Testing Plugin Integrity ...");
                 
         //admin
         $this->assertFileExists($plugin_directory.'admin/class-nds-user-meta-manager-admin.php');

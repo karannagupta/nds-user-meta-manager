@@ -17,11 +17,11 @@
             <input type="hidden" name="nds_user" value="<?php echo $user_id; ?>" />
             <div>
                 <strong><label for="<?php echo $plugin_name; ?>-user_meta_key"> <?php _e('New User Meta Key', $plugin_name); ?> </label></strong><br />
-                <input id="<?php echo $plugin_name; ?>-user_meta_key" type="text" name="<?php echo $plugin_name; ?>[user_meta_key]" value="" placeholder="<?php _e('Meta Key', $plugin_name);?>" /><br />
+                <input id="<?php echo $plugin_name; ?>-user_meta_key" type="text" name="<?php echo "nds"; ?>[user_meta_key]" value="" placeholder="<?php _e('Meta Key', $plugin_name);?>" /><br />
             </div>
             <div>
                 <strong><label for="<?php echo $plugin_name; ?>-user_meta_value"> <?php _e('Value for User Meta Key', $plugin_name); ?> </label></strong><br />
-                <input id="<?php echo $plugin_name; ?>-user_meta_value" type="text" name="<?php echo $plugin_name; ?>[user_meta_value]" value="" placeholder="<?php _e('Meta Value', $plugin_name);?>"/><br />
+                <input id="<?php echo $plugin_name; ?>-user_meta_value" type="text" name="<?php echo "nds"; ?>[user_meta_value]" value="" placeholder="<?php _e('Meta Value', $plugin_name);?>"/><br />
             </div>                 
             <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
     <?php    

@@ -208,17 +208,22 @@ class Nds_User_Meta_Manager_Admin {
          * @since    1.0.0
          */
         public function nds_add_user_meta_form_response() {
-                //if(isset($_REQUEST['nds_add_user_meta_nonce']) && wp_verify_nonce($_REQUEST['nds_add_user_meta_nonce'], 'nds_add_user_meta_form_nonce')) {                    
-                
-                //using our oop nonce class
+                $admin_notice = "no_change";
+                /*
+                 * Test using our oop based nonce 
+                 * 
+                 * if(isset($_REQUEST['nds_add_user_meta_nonce']) && wp_verify_nonce($_REQUEST['nds_add_user_meta_nonce'], 'nds_add_user_meta_form_nonce'))
+                 */
+            
                 if(isset($_REQUEST['nds_add_user_meta_nonce']) && $this->nds_nonce->wp_verify_nonce_field($_REQUEST['nds_add_user_meta_nonce'], 'nds_add_user_meta_form_nonce')) {
-                    if(isset($_REQUEST[$this->plugin_name]['user_meta_key']) && isset($_REQUEST[$this->plugin_name]['user_meta_value'])  ) {                        
-                        $nds_user_meta_key = sanitize_key($_REQUEST[$this->plugin_name]['user_meta_key']);
-                        $nds_user_meta_value = sanitize_text_field($_REQUEST[$this->plugin_name]['user_meta_value']);
+                    if(isset($_REQUEST['nds']['user_meta_key']) && isset($_REQUEST['nds']['user_meta_value'])  ) {                        
+                        $nds_user_meta_key = sanitize_key($_REQUEST['nds']['user_meta_key']);
+                        $nds_user_meta_value = sanitize_text_field($_REQUEST['nds']['user_meta_value']);
                         $nds_user_id = absint($_REQUEST['nds_user']);
                         add_user_meta($nds_user_id, $nds_user_meta_key, $nds_user_meta_value, false);
                         
-                        wp_redirect( esc_url_raw( add_query_arg( 'nds_admin_add_notice', 'meta_added', admin_url('admin.php?page='. $this->plugin_name) ) ) );                        
+                        $admin_notice = "meta_added";                        
+                        $this->nds_redirect($admin_notice);
                     }                           
                 }
                 else {
@@ -238,9 +243,13 @@ class Nds_User_Meta_Manager_Admin {
         public function nds_delete_user_meta_form_response() {                
                 $admin_notice = "no_change";
                 
-                //if(isset($_REQUEST['nds_delete_user_meta_nonce']) && wp_verify_nonce($_REQUEST['nds_delete_user_meta_nonce'], 'nds_delete_user_meta_form_nonce')) {
-                                
-                //using our oop nonce class
+                /*
+                 * Test using our oop based nonce 
+                 * 
+                 * if(isset($_REQUEST['nds_delete_user_meta_nonce']) && wp_verify_nonce($_REQUEST['nds_delete_user_meta_nonce'], 'nds_delete_user_meta_form_nonce'))
+                 * 
+                 */
+
                 if(isset($_REQUEST['nds_delete_user_meta_nonce']) && $this->nds_nonce->wp_verify_nonce_field($_REQUEST['nds_delete_user_meta_nonce'], 'nds_delete_user_meta_form_nonce')) {
                     if(isset($_REQUEST['nds_delete_user_meta_key']) && !empty($_REQUEST['nds_delete_user_meta_key']) ) {                               
                         
@@ -253,7 +262,8 @@ class Nds_User_Meta_Manager_Admin {
                             $admin_notice = "meta_deleted";
                         }                                                
                     }
-                    wp_redirect( esc_url_raw( add_query_arg( 'nds_admin_add_notice', $admin_notice, admin_url('admin.php?page='. $this->plugin_name) ) ) );
+                    
+                    $this->nds_redirect($admin_notice);                    
                     
                 }
                 else {
@@ -263,7 +273,16 @@ class Nds_User_Meta_Manager_Admin {
 
                         ) );
                 }
-        }        
+        }       
+        
+        /**
+         * Redirect
+         * 
+         * @since    1.0.0
+         */
+        public function nds_redirect($admin_notice) {
+            wp_redirect( esc_url_raw( add_query_arg( 'nds_admin_add_notice', $admin_notice, admin_url('admin.php?page='. $this->plugin_name) ) ) );
+        }
         
         
         /**
