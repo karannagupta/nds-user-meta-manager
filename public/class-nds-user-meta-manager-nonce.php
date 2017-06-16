@@ -103,13 +103,13 @@ class Nds_User_Meta_Manager_Nonce {
     	       	return check_ajax_referer( $action, $queryArg, $die );
     	}	
 	
-      /**
-      *Display's 'Are you sure you want to do this?' message to confirm the action being taken.
-      *@param $action :: The required string nonce action.
-      *@return This function does not return a value. 
-      */
+        /**
+        *Display's 'Are you sure you want to do this?' message to confirm the action being taken.
+        *@param $action :: The required string nonce action.
+        *@return This function does not return a value. 
+        */
 
-      public static function wpNonceAys( $action ) {
-               wp_nonce_ays( $action );
-      }
+        public static function wp_nonce_ays( $action ) {
+                 wp_nonce_ays( $action );
+        }
 }

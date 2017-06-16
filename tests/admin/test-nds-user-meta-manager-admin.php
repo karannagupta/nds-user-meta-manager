@@ -19,7 +19,7 @@ class Nds_User_Meta_Manager_Admin_Test extends WP_UnitTestCase {
     private $plugin_name;
 
     public function setUp() {
-        parent::setUp();   
+        parent::setUp();           
                 
         //Create the mock        
         $this->mock = $this->getMockBuilder('Nds_User_Meta_Manager_Admin')                              

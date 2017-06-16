@@ -8,7 +8,7 @@
 
 class Nds_User_Meta_Manager_Test extends WP_UnitTestCase {    
     public function setUp() {
-        parent::setUp();
+        parent::setUp();        
     }
         
     public function tearDown() {
@@ -16,8 +16,8 @@ class Nds_User_Meta_Manager_Test extends WP_UnitTestCase {
     }
     
     public function test_load_dependencies() {
-        $plugin_directory = plugin_dir_path( dirname( __FILE__ ) );
-        fwrite(STDOUT, "\n\t\t Testing Plugin Integrity ...");
+        fwrite(STDOUT, "\n\t\t Testing Plugin Integrity ..");
+        $plugin_directory = plugin_dir_path( dirname( __FILE__ ) );        
                 
         //admin
         $this->assertFileExists($plugin_directory.'admin/class-nds-user-meta-manager-admin.php');
