@@ -84,7 +84,7 @@ class Nds_User_List extends Nds_WP_List_Table {
          *
          * @return mixed
          */
-        private static function get_users( $per_page = 15, $page_number = 1 ) {
+        public function get_users( $per_page = 15, $page_number = 1 ) {
 
             global $wpdb;
 
@@ -110,7 +110,7 @@ class Nds_User_List extends Nds_WP_List_Table {
          * 
          * @return null|string
          */
-        private static function record_count() {
+        public function record_count() {
           global $wpdb;
 
           $user_sql = "SELECT COUNT(*) FROM {$wpdb->prefix}users";
@@ -195,7 +195,7 @@ class Nds_User_List extends Nds_WP_List_Table {
        }
        
         /** 
-         * Text displayed when no customer data is available 
+         * Text displayed when no user data is available 
          * 
          * @since   1.0.0
          * 
@@ -232,14 +232,14 @@ class Nds_User_List extends Nds_WP_List_Table {
             
             $per_page     = $this->get_items_per_page( 'users_per_page', 15 );
             $current_page = $this->get_pagenum();
-            $total_items  = self::record_count();
+            $total_items  = $this->record_count();
 
             $this->set_pagination_args( [
               'total_items' => $total_items, //calculate the total number of items
               'per_page'    => $per_page //determine how many items to show on a page
             ] );
             
-           $this->items = self::get_users( $per_page, $current_page );  
+           $this->items = $this->get_users( $per_page, $current_page );  
             
         }
 
@@ -262,8 +262,8 @@ class Nds_User_List extends Nds_WP_List_Table {
         * 
         * @return void
         */       
-        public function process_bulk_action() {                                              
-            if ( 'nds_view_user_meta' === $this->current_action() ) {                
+        public function process_bulk_action() {                                  
+            if ( 'nds_view_user_meta' === $this->current_action() ) {                                
                 $nonce = esc_attr( $_REQUEST['_wpnonce'] );                            
                 
                 /*
@@ -281,7 +281,7 @@ class Nds_User_List extends Nds_WP_List_Table {
 
                         ));
                 }
-                else {
+                else {                    
                     $this->nds_view_user_meta( absint( $_GET['nds_user']), $this->plugin_name );
                     $this->graceful_exit();
                 }

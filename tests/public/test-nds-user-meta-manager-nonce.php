@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Nds_User_Meta_Manager_Test
+ * Class Nds_User_Meta_Manager_Nonce_Test
  *
  * @package Nds_User_Meta_Manager
  */
