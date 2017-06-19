@@ -3,7 +3,9 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Purpose
-The main purpose of this plugin is to learn WordPress plugin development as well as share knowledge of the WordPress API. The plugin was created using Object Oriented Constructs, and tested using PHPUnit. Once can install the plugin using a composer package or manually.
+The main purpose of this plugin is to learn WordPress plugin development as well as share knowledge of the WordPress API. 
+The plugin was created using Object Oriented Constructs, and tested using PHPUnit. 
+One can install the plugin using a composer package or manually.
 
 ## Description 
 A simple admin plugin demo to manage user meta using object oriented constructs. 
@@ -12,13 +14,13 @@ It also makes use of WordPress nonces wrapped in a class to be implemented in an
 
 ## Installation Manually
 
-1. Download the latest arhive master.zip 
+1. Download the latest archive: https://github.com/nuancedesignstudio/nds-user-meta-manager/archive/master.zip and extract to a folder `nds-user-meta-manager`
 2. Upload `nds-user-meta-manager` to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
 ## Installation using Composer
 
-1. Download `composer.json` to the root directory of your wordprss installation
+1. Download `composer.json` to the root directory of your wordpress installation
 2. Run `composer install`
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
