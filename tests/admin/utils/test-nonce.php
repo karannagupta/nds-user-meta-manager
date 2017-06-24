@@ -6,7 +6,7 @@
  * @package Nds_User_Meta_Manager
  */
 
-class Nds_User_Meta_Manager_Nonce_Test extends WP_UnitTestCase {    
+class Nonce_Test extends WP_UnitTestCase {    
     
     /**
     * @var $mock
@@ -21,7 +21,7 @@ class Nds_User_Meta_Manager_Nonce_Test extends WP_UnitTestCase {
     public function setUp() {
         parent::setUp();     
 
-        $this->nds_nonce = new Nds_User_Meta_Manager_Nonce();        
+        $this->nds_nonce = new Nds_User_Meta_Manager\Admin\Utils\Nonce();        
     }
     
     public function tearDown() {

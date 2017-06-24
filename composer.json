@@ -9,25 +9,36 @@
       "homepage": "http://nuancedesignstudio.in"
     }
   ],  
-  "require": {
-        "nuancedesignstudio/nds-user-meta-manager": "1.0.0",
-        "composer/installers": "v1.0.7"
-  },
   "repositories": [
     {
-      "type": "package",
-      "package": {
-        "name": "nuancedesignstudio/nds-user-meta-manager",        
-        "type": "wordpress-plugin",
-        "version": "1.0.0",
-        "dist": {
-          "type": "zip",
-          "url": "https://github.com/nuancedesignstudio/nds-user-meta-manager/archive/master.zip"
+        "type": "composer",
+        "url": "https://wpackagist.org"
+    },
+    {
+        "type": "package",
+        "package": {
+            "name": "nuancedesignstudio/nds-user-meta-manager",        
+            "type": "wordpress-plugin",
+            "version": "1.1.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/nuancedesignstudio/nds-user-meta-manager/archive/master.zip"
+            },
+            "require": {
+                "composer/installers": "v1.0.7"
+            }
         }
-      }
     }
   ],
-  "extra": {
+  "require": {
+    "php": ">=5.3.0",    
+    "nuancedesignstudio/nds-user-meta-manager": "1.1.0"        
+  },
+  "require-dev": {
+    "php": ">=5.3",        
+    "phpunit/phpunit": "^4.8"    
+  },
+  "extra": {    
     "installer-paths": {
         "wp-content/plugins/{$name}/": ["type:wordpress-plugin"]
     }

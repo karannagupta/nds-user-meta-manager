@@ -1,4 +1,7 @@
 <?php    
+
+use Nds_User_Meta_Manager\Admin\Utils;
+
     if(current_user_can('edit_users')) {
         $dropdown_html = '<select id="nds_delete_user_meta_key" name="nds_delete_user_meta_key">
                             <option value="">'.__('Select A Meta Key', $plugin_name).'</option>';
@@ -20,7 +23,7 @@
                       
                 //use our oop nonce class
                 //$nds_delete_meta_nonce = wp_create_nonce('nds_delete_user_meta_form_nonce');
-                $nds_delete_meta_nonce = Nds_User_Meta_Manager_Nonce::create_nonce('nds_delete_user_meta_form_nonce'); 
+                $nds_delete_meta_nonce = Utils\Nonce::create_nonce('nds_delete_user_meta_form_nonce'); 
              ?>            
             <input type="hidden" name="action" value="nds_delete_user_meta_form_response">
             <input type="hidden" name="nds_delete_user_meta_nonce" value="<?php echo $nds_delete_meta_nonce ?>" />

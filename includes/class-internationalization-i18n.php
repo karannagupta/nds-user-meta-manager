@@ -1,17 +1,6 @@
 <?php
 
-/**
- * Define the internationalization functionality
- *
- * Loads and defines the internationalization files for this plugin
- * so that it is ready for translation.
- *
- * @link       http://nuancedesignstudio.in
- * @since      1.0.0
- *
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/includes
- */
+namespace Nds_User_Meta_Manager\Includes;
 
 /**
  * Define the internationalization functionality.
@@ -19,12 +8,12 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
+ * @link       http://nuancedesignstudio.in
  * @since      1.0.0
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/includes
+*
  * @author     Karan NA Gupta
  */
-class Nds_User_Meta_Manager_i18n {
+class Internationalization_i18n {
 
 
 	/**
@@ -41,7 +30,4 @@ class Nds_User_Meta_Manager_i18n {
 		);
 
 	}
-
-
-
 }

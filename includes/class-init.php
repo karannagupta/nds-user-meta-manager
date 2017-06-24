@@ -1,5 +1,9 @@
 <?php
 
+namespace Nds_User_Meta_Manager\Includes;
+use Nds_User_Meta_Manager\Admin as Admin;
+use Nds_User_Meta_Manager\Views as Views;
+
 /**
  * The core plugin class.
  * Defines internationalization, admin-specific hooks, and public-facing site hooks.
@@ -7,11 +11,9 @@
  * @link       http://nuancedesignstudio.in
  * @since      1.0.0
  * 
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/includes
  * @author     Karan NA Gupta
  */
-class Nds_User_Meta_Manager {
+class Init {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -19,12 +21,25 @@ class Nds_User_Meta_Manager {
 	 * @var      Nds_User_Meta_Manager_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
-
-        // unique identifier of this plugin.
-	protected $plugin_name;
         
-        // current version of the plugin.
-	protected $version; 
+	
+	/**
+	 * The unique identifier of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $plugin_slug    The string used to uniquely identify this plugin.
+	 */
+	protected $plugin_slug;
+
+	/**
+	 * The current version of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $version    The current version of the plugin.
+	 */
+	protected $version;      
 	
         // define the core functionality of the plugin.		 
 	public function __construct() {
@@ -50,15 +65,8 @@ class Nds_User_Meta_Manager {
          * @access    private
 	 */
 	private function load_dependencies() {
-
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-nds-user-meta-manager-loader.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-nds-user-meta-manager-i18n.php';
-                require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-nds-user-meta-manager-nonce.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-nds-user-meta-manager-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-nds-user-meta-manager-public.php';                
-
-		$this->loader = new Nds_User_Meta_Manager_Loader();
-
+		$this->loader = new Loader();
+                
 	}
 
 	/**
@@ -71,7 +79,7 @@ class Nds_User_Meta_Manager {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Nds_User_Meta_Manager_i18n();
+		$plugin_i18n = new Internationalization_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -85,7 +93,7 @@ class Nds_User_Meta_Manager {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Nds_User_Meta_Manager_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Admin\Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );     
@@ -118,7 +126,7 @@ class Nds_User_Meta_Manager {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Nds_User_Meta_Manager_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Views\Public_View( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );

@@ -1,26 +1,17 @@
 <?php
 
+namespace Nds_User_Meta_Manager\Admin\Utils;
+
 /**
- * The public-facing functionality of the plugin.
+ * Adding Nonce functionality using OOP.
  *
  * @link       http://nuancedesignstudio.in
  * @since      1.0.0
  *
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/public
- */
-
-/**
- * The public-facing functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/public
  * @author     Karan NA Gupta
  */
-class Nds_User_Meta_Manager_Nonce {
+
+class Nonce {
 
         /**
         *Add nonce to URL actions

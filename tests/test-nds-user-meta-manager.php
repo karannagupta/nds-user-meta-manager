@@ -20,7 +20,7 @@ class Nds_User_Meta_Manager_Test extends WP_UnitTestCase {
         $plugin_directory = plugin_dir_path( dirname( __FILE__ ) );        
                 
         //admin
-        $this->assertFileExists($plugin_directory.'admin/class-nds-user-meta-manager-admin.php');
+        $this->assertFileExists($plugin_directory.'admin/class-admin.php');
                 
         //admin/css
         $this->assertFileExists($plugin_directory.'admin/css/nds-user-meta-manager-admin.css');
@@ -34,16 +34,17 @@ class Nds_User_Meta_Manager_Test extends WP_UnitTestCase {
         $this->assertFileExists($plugin_directory.'admin/partials/nds-user-meta-manager-admin-meta-delete-display.php');
         $this->assertFileExists($plugin_directory.'admin/partials/nds-user-meta-manager-admin-meta-view-display.php');
         
-        //admin/views
-        $this->assertFileExists($plugin_directory.'admin/views/class-nds-user-list.php');
-        $this->assertFileExists($plugin_directory.'admin/views/class-nds-wp-list-table.php');
+        //admin/utils
+        $this->assertFileExists($plugin_directory.'admin/utils/class-user-list-table.php');
+        $this->assertFileExists($plugin_directory.'admin/utils/class-wp-list-table.php');
+        $this->assertFileExists($plugin_directory.'admin/utils/class-nonce.php');
         
         //includes
-        $this->assertFileExists($plugin_directory.'includes/class-nds-user-meta-manager.php');
-        $this->assertFileExists($plugin_directory.'includes/class-nds-user-meta-manager-deactivator.php');
-        $this->assertFileExists($plugin_directory.'includes/class-nds-user-meta-manager-activator.php');
-        $this->assertFileExists($plugin_directory.'includes/class-nds-user-meta-manager-loader.php');
-        $this->assertFileExists($plugin_directory.'includes/class-nds-user-meta-manager-i18n.php');
+        $this->assertFileExists($plugin_directory.'includes/class-init.php');
+        $this->assertFileExists($plugin_directory.'includes/class-deactivator.php');
+        $this->assertFileExists($plugin_directory.'includes/class-activator.php');
+        $this->assertFileExists($plugin_directory.'includes/class-loader.php');
+        $this->assertFileExists($plugin_directory.'includes/class-internationalization-i18n.php');
                 
         $this->assertTrue( is_plugin_active( $plugin_directory . 'nds-user-meta-manager.php'));
                

@@ -1,4 +1,11 @@
 <?php
+
+namespace Nds_User_Meta_Manager\Admin\Utils;
+
+/*
+ * Copied from the WordPress core
+ */
+
 /**
  * Administration API: WP_List_Table class
  *
@@ -15,7 +22,7 @@
  */
 
 
-class Nds_WP_List_Table {
+class WP_List_Table {
 
 	/**
 	 * The current list of items.

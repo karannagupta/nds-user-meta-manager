@@ -1,11 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+namespace Nds_User_Meta_Manager\Admin\Utils;
 
 /**
  * Description of class-nds-user-list
@@ -18,7 +13,7 @@
  * @author     Karan NA Gupta
  */
 
-class Nds_User_List extends Nds_WP_List_Table {
+class User_List_Table extends WP_List_Table {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -43,13 +38,13 @@ class Nds_User_List extends Nds_WP_List_Table {
 	private $nds_nonce;        
 	
         // define the core functionality of the plugin.		 
-	public function __construct() {
+	public function __construct($plugin_name, $version) {
 
-		$this->plugin_name = 'nds-user-meta-manager';
-		$this->version = '1.0.0';
+		$this->plugin_name = $plugin_name;
+		$this->version = $version;
                 
                 //instantiate the nonce class
-                $this->nds_nonce = new Nds_User_Meta_Manager_Nonce();
+                $this->nds_nonce = new Nonce();
                 
                 parent::__construct(array(
                     'singular'  => __('nds-user', $this->plugin_name),

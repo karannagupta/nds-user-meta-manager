@@ -1,23 +1,17 @@
 <?php
 
+namespace Nds_User_Meta_Manager\Admin;
+use Nds_User_Meta_Manager\Admin\Utils as Utils;
+
 /**
  * The admin-specific functionality of the plugin.
+ * 
+ * Defines the plugin name, version, and two examples hooks for how to
+ * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @link       http://nuancedesignstudio.in
  * @since      1.0.0
  *
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/admin
  * @author     Karan NA Gupta
  */
 
@@ -31,7 +25,7 @@
  * class.
  */
 
-class Nds_User_Meta_Manager_Admin {
+class Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -84,10 +78,7 @@ class Nds_User_Meta_Manager_Admin {
 		$this->version = $version;               
                 
                 //instantiate the nonce class
-                $this->nds_nonce = new Nds_User_Meta_Manager_Nonce();
-                
-                $this->load_dependencies();
-                                
+                $this->nds_nonce = new Utils\Nonce();                                
 	}
 
 	/**
@@ -98,7 +89,6 @@ class Nds_User_Meta_Manager_Admin {
 	public function enqueue_styles() {
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/nds-user-meta-manager-admin.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -109,33 +99,8 @@ class Nds_User_Meta_Manager_Admin {
 	public function enqueue_scripts() {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/nds-user-meta-manager-admin.js', array( 'jquery' ), $this->version, false );
-
 	}
         
-
-	/**
-	 * Load the required dependencies for the Admin facing functionality.
-	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Nds_User_List. Registers the admin settings and page.
-	 *
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 */
-	private function load_dependencies() {
-
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-                if ( ! class_exists( 'Nds_WP_List_Table' ) ) {
-                    require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/views/class-nds-wp-list-table.php' ;
-                }
-		require_once plugin_dir_path( dirname( __FILE__ ) ) .  'admin/views/class-nds-user-list.php';
-                
-	}
         
         /**
         * Add settings action link to the plugins page.
@@ -190,7 +155,7 @@ class Nds_User_Meta_Manager_Admin {
                 add_screen_option( $option, $args );
                 
                 //instantiate the NDS_User_List
-                $this->user_list_obj = new Nds_User_List();
+                $this->user_list_obj = new Utils\User_List_Table($this->plugin_name, $this->version);
         }       
         
         /**

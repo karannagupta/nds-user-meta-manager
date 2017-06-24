@@ -1,26 +1,20 @@
 <?php
 
-/**
- * The public-facing functionality of the plugin.
- *
- * @link       http://nuancedesignstudio.in
- * @since      1.0.0
- *
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/public
- */
+namespace Nds_User_Meta_Manager\Views;
 
 /**
  * The public-facing functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
+ * 
+ * @link       http://nuancedesignstudio.in
+ * @since      1.0.0
  *
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/public
  * @author     Karan NA Gupta
  */
-class Nds_User_Meta_Manager_Public {
+
+class Public_View {
 
 	/**
 	 * The ID of this plugin.

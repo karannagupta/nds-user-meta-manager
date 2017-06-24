@@ -14,7 +14,7 @@ It also makes use of WordPress nonces wrapped in a class to be implemented in an
 
 ## Installation Manually
 
-1. Download the latest archive: https://github.com/nuancedesignstudio/nds-user-meta-manager/archive/master.zip and extract to a folder `nds-user-meta-manager`
+1. Download the latest archive and extract to a folder `nds-user-meta-manager`
 2. Upload `nds-user-meta-manager` to the `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 
