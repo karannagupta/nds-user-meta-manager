@@ -1,7 +1,7 @@
 <?php
 
 namespace Nds_User_Meta_Manager\Views;
-
+use Nds_User_Meta_Manager\Lib;
 /**
  * The public-facing functionality of the plugin.
  *
@@ -14,7 +14,7 @@ namespace Nds_User_Meta_Manager\Views;
  * @author     Karan NA Gupta
  */
 
-class Public_View {
+class Public_View implements Lib\Assets_Interface {
 
 	/**
 	 * The ID of this plugin.

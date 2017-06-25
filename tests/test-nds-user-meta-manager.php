@@ -21,7 +21,8 @@ class Nds_User_Meta_Manager_Test extends WP_UnitTestCase {
                 
         //admin
         $this->assertFileExists($plugin_directory.'admin/class-admin.php');
-                
+        $this->assertFileExists($plugin_directory.'admin/class-user-list-table.php');
+        
         //admin/css
         $this->assertFileExists($plugin_directory.'admin/css/nds-user-meta-manager-admin.css');
         
@@ -34,10 +35,9 @@ class Nds_User_Meta_Manager_Test extends WP_UnitTestCase {
         $this->assertFileExists($plugin_directory.'admin/partials/nds-user-meta-manager-admin-meta-delete-display.php');
         $this->assertFileExists($plugin_directory.'admin/partials/nds-user-meta-manager-admin-meta-view-display.php');
         
-        //admin/utils
-        $this->assertFileExists($plugin_directory.'admin/utils/class-user-list-table.php');
-        $this->assertFileExists($plugin_directory.'admin/utils/class-wp-list-table.php');
-        $this->assertFileExists($plugin_directory.'admin/utils/class-nonce.php');
+        //lib        
+        $this->assertFileExists($plugin_directory.'lib/class-wp-list-table.php');
+        $this->assertFileExists($plugin_directory.'lib/class-nonce.php');
         
         //includes
         $this->assertFileExists($plugin_directory.'includes/class-init.php');

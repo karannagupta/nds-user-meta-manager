@@ -21,7 +21,7 @@ class Nonce_Test extends WP_UnitTestCase {
     public function setUp() {
         parent::setUp();     
 
-        $this->nds_nonce = new Nds_User_Meta_Manager\Admin\Utils\Nonce();        
+        $this->nds_nonce = new Nds_User_Meta_Manager\Lib\Nonce();        
     }
     
     public function tearDown() {

@@ -1,7 +1,7 @@
 <?php
 
 namespace Nds_User_Meta_Manager\Admin;
-use Nds_User_Meta_Manager\Admin\Utils as Utils;
+use Nds_User_Meta_Manager\Lib;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -25,7 +25,7 @@ use Nds_User_Meta_Manager\Admin\Utils as Utils;
  * class.
  */
 
-class Admin {
+class Admin implements Lib\Assets_Interface{
 
 	/**
 	 * The ID of this plugin.
@@ -78,7 +78,7 @@ class Admin {
 		$this->version = $version;               
                 
                 //instantiate the nonce class
-                $this->nds_nonce = new Utils\Nonce();                                
+                $this->nds_nonce = new Lib\Nonce();                                
 	}
 
 	/**
@@ -155,7 +155,7 @@ class Admin {
                 add_screen_option( $option, $args );
                 
                 //instantiate the NDS_User_List
-                $this->user_list_obj = new Utils\User_List_Table($this->plugin_name, $this->version);
+                $this->user_list_obj = new User_List_Table($this->plugin_name, $this->version);
         }       
         
         /**

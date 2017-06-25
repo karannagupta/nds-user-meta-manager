@@ -18,7 +18,7 @@ class Nds_User_List_Test extends WP_UnitTestCase {
                 
         //Create the mock   
         
-        $this->mock = $this->getMockBuilder('Nds_User_Meta_Manager\Admin\Utils\User_List_Table')   
+        $this->mock = $this->getMockBuilder('Nds_User_Meta_Manager\Admin\User_List_Table')   
                             ->disableOriginalConstructor()
                             ->setMethods(array('graceful_exit'))
                             ->getMock();

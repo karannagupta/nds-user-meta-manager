@@ -1,6 +1,7 @@
 <?php
 
-namespace Nds_User_Meta_Manager\Admin\Utils;
+namespace Nds_User_Meta_Manager\Admin;
+use Nds_User_Meta_Manager\Lib;
 
 /**
  * Description of class-nds-user-list
@@ -13,7 +14,7 @@ namespace Nds_User_Meta_Manager\Admin\Utils;
  * @author     Karan NA Gupta
  */
 
-class User_List_Table extends WP_List_Table {
+class User_List_Table extends Lib\WP_List_Table {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -44,7 +45,7 @@ class User_List_Table extends WP_List_Table {
 		$this->version = $version;
                 
                 //instantiate the nonce class
-                $this->nds_nonce = new Nonce();
+                $this->nds_nonce = new Lib\Nonce();
                 
                 parent::__construct(array(
                     'singular'  => __('nds-user', $this->plugin_name),
@@ -340,7 +341,7 @@ class User_List_Table extends WP_List_Table {
         public function nds_view_user_meta( $user_id, $plugin_name ) {            
             $user = get_user_by( 'id', $user_id );
             echo __('<h2> View Meta for ' . $user->user_login . '</h2>');           
-            include_once( plugin_dir_path( dirname( __DIR__ ) ) .'admin/partials/nds-user-meta-manager-admin-meta-view-display.php' );
+            include_once( PLUGIN_NAME_DIR .'admin/partials/nds-user-meta-manager-admin-meta-view-display.php' );
         }       
         
         /**
@@ -354,7 +355,7 @@ class User_List_Table extends WP_List_Table {
         public function nds_add_user_meta( $user_id, $plugin_name ) {            
             $user = get_user_by( 'id', $user_id );
             echo __('<h2> Add Meta for ' . $user->user_login . '</h2>');                        
-            include_once( plugin_dir_path( dirname( __DIR__ ) ) .'admin/partials/nds-user-meta-manager-admin-meta-add-display.php' );
+            include_once( PLUGIN_NAME_DIR .'admin/partials/nds-user-meta-manager-admin-meta-add-display.php' );
         }               
 
         /**
@@ -368,6 +369,6 @@ class User_List_Table extends WP_List_Table {
         public function nds_delete_user_meta( $user_id, $plugin_name ) {            
             $user = get_user_by( 'id', $user_id );
             echo __('<h2> Delete Meta for ' . $user->user_login . '</h2>');                        
-            include_once( plugin_dir_path( dirname( __DIR__ ) ) .'admin/partials/nds-user-meta-manager-admin-meta-delete-display.php' );
+            include_once( PLUGIN_NAME_DIR .'admin/partials/nds-user-meta-manager-admin-meta-delete-display.php' );
         }               
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nds_User_Meta_Manager\Admin\Utils;
+namespace Nds_User_Meta_Manager\Lib;
 
 /*
  * Copied from the WordPress core
