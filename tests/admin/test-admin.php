@@ -21,7 +21,7 @@ class Admin_Test extends WP_UnitTestCase {
         parent::setUp();           
                 
         //Create the mock        
-        $this->mock = $this->getMockBuilder('Nds_User_Meta_Manager\Admin\Admin')                              
+        $this->mock = $this->getMockBuilder('Nds_User_Meta_Manager\Inc\Admin\Admin')                              
                             ->setConstructorArgs(array('nds-user-meta-manager', '1.0.0'))                                                       
                             ->setMethods(array('nds_redirect'))
                             ->getMock();

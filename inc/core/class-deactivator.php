@@ -1,6 +1,6 @@
 <?php
 
-namespace Nds_User_Meta_Manager\Includes;
+namespace Nds_User_Meta_Manager\Inc\Core;
 
 /**
  * Fired during plugin deactivation

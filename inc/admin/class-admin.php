@@ -1,7 +1,7 @@
 <?php
 
-namespace Nds_User_Meta_Manager\Admin;
-use Nds_User_Meta_Manager\Lib;
+namespace Nds_User_Meta_Manager\Inc\Admin;
+use Nds_User_Meta_Manager\Inc\Libraries;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -25,7 +25,7 @@ use Nds_User_Meta_Manager\Lib;
  * class.
  */
 
-class Admin implements Lib\Assets_Interface{
+class Admin implements Libraries\Assets_Interface{
 
 	/**
 	 * The ID of this plugin.
@@ -78,7 +78,7 @@ class Admin implements Lib\Assets_Interface{
 		$this->version = $version;               
                 
                 //instantiate the nonce class
-                $this->nds_nonce = new Lib\Nonce();                                
+                $this->nds_nonce = new Libraries\Nonce();                                
 	}
 
 	/**

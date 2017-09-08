@@ -1,6 +1,6 @@
 <?php
 
-namespace Nds_User_Meta_Manager\Includes;
+namespace Nds_User_Meta_Manager\Inc\Core;
 
 /**
  * Register all actions and filters for the plugin

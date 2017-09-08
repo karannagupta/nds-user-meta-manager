@@ -2,14 +2,6 @@
 
 /**
  * Provide a admin area view for the plugin
- *
- * This file is used to markup the admin-facing aspects of the plugin.
- *
- * @link       Author URI
- * @since      1.0.0
- *
- * @package    Nds_User_Meta_Manager
- * @subpackage Nds_User_Meta_Manager/admin/partials
  */
 ?>
 

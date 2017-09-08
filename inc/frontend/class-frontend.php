@@ -1,7 +1,7 @@
 <?php
 
-namespace Nds_User_Meta_Manager\Views;
-use Nds_User_Meta_Manager\Lib;
+namespace Nds_User_Meta_Manager\Inc\Frontend;
+use Nds_User_Meta_Manager\Inc\Libraries;
 /**
  * The public-facing functionality of the plugin.
  *
@@ -14,7 +14,7 @@ use Nds_User_Meta_Manager\Lib;
  * @author     Karan NA Gupta
  */
 
-class Public_View implements Lib\Assets_Interface {
+class Frontend implements Libraries\Assets_Interface {
 
 	/**
 	 * The ID of this plugin.

@@ -1,8 +1,8 @@
 <?php
 
-namespace Nds_User_Meta_Manager\Includes;
-use Nds_User_Meta_Manager\Admin as Admin;
-use Nds_User_Meta_Manager\Views as Views;
+namespace Nds_User_Meta_Manager\Inc\Core;
+use Nds_User_Meta_Manager\Inc\Admin as Admin;
+use Nds_User_Meta_Manager\Inc\Frontend as Frontend;
 
 /**
  * The core plugin class.
@@ -126,7 +126,7 @@ class Init {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Views\Public_View( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Frontend\Frontend( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );

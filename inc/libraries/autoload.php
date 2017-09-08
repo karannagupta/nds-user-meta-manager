@@ -7,9 +7,9 @@
  * 
  * 
  */
-     
+
 /*
- * copied from
+ * Thanks to Tom McFarlin
  * https://code.tutsplus.com/tutorials/using-namespaces-and-autoloading-in-wordpress-plugins-4--cms-27342
  */
 
@@ -72,7 +72,8 @@ function nds_user_meta_manager_autoloader( $class_name ) {
     }
 
     // Now build a path to the file using mapping to the file location.
-    $filepath  = trailingslashit( dirname( dirname( __FILE__ ) ) . $namespace );
+    $filepath  = trailingslashit( untrailingslashit( plugin_dir_path( dirname( __DIR__ ) ) ) . $namespace );
+	//wp_die(plugin_dir_path( dirname( __DIR__ ) ) );
     $filepath .= $file_name;
 
     // If the file exists in the specified path, then include it.

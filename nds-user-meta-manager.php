@@ -19,7 +19,7 @@
  * Domain Path:       /languages
  */
 
-use Nds_User_Meta_Manager\Includes;
+namespace Nds_User_Meta_Manager;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -40,7 +40,7 @@ define( 'PLUGIN_NAME_BASENAME', plugin_basename( __FILE__ ) );
  * Autoload Classes
  */
 
-require_once( PLUGIN_NAME_DIR . 'lib/autoload.php');
+require_once( PLUGIN_NAME_DIR . 'inc/libraries/autoload.php');
 
 /**
  * Register Activation and Deactivation Hooks
@@ -49,14 +49,14 @@ require_once( PLUGIN_NAME_DIR . 'lib/autoload.php');
  * This action is documented in includes/class-activator.php
  */
 
-register_activation_hook( __FILE__, array('Nds_User_Meta_Manager\Includes\Activator', 'activate') );
+register_activation_hook( __FILE__, array('Nds_User_Meta_Manager\Inc\Core\Activator', 'activate') );
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in lib/class-deactivator.php
  */
 
-register_deactivation_hook( __FILE__, array('Nds_User_Meta_Manager\Includes\Deactivator', 'deactivate') );
+register_deactivation_hook( __FILE__, array('Nds_User_Meta_Manager\Inc\Core\Deactivator', 'deactivate') );
 
 
 /**
@@ -78,7 +78,7 @@ class Nds_User_Meta_Manager {
 	public static function init() {
 
 		if ( null == self::$init ) {
-			self::$init = new Includes\init();
+			self::$init = new Inc\Core\init();
 			self::$init->run();
 		}
 
