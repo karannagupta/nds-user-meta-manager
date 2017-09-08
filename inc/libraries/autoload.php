@@ -72,8 +72,7 @@ function nds_user_meta_manager_autoloader( $class_name ) {
     }
 
     // Now build a path to the file using mapping to the file location.
-    $filepath  = trailingslashit( untrailingslashit( plugin_dir_path( dirname( __DIR__ ) ) ) . $namespace );
-	//wp_die(plugin_dir_path( dirname( __DIR__ ) ) );
+    $filepath  = trailingslashit( untrailingslashit( plugin_dir_path( dirname( __DIR__ ) ) ) . $namespace );	
     $filepath .= $file_name;
 
     // If the file exists in the specified path, then include it.
