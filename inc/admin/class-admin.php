@@ -128,18 +128,29 @@ class Admin implements Libraries\Assets_Interface{
         
         public function nds_add_plugin_admin_menu() {                           
                             
-            	// Add the new admin menu and page and save the returned hook suffix for future
+            	// Add a sub-menu under Users and save the returned hook suffix for callbacks when the menu page is loaded.		
                 $nds_hook_suffix = add_users_page( __('NDS User Meta Manager', $this->plugin_name ), //page_title
                                                 __('NDS User Meta Manager', $this->plugin_name ), //menu_title
                                                 'manage_options', //capability
                                                 $this->plugin_name, //menu_slug
-                                                array($this, 'nds_plugin_admin_page_view') //callback
+                                                array($this, 'nds_plugin_admin_page_view') //callback to load page contents
                                                 );
+
+                /*
+                 * $page_hook_suffix it can be combined with the load-($page_hook_suffix) action hook
+                 *
+                 * https://codex.wordpress.org/Plugin_API/Action_Reference/load-(page) 
+                 * 
+                 * The callback below will be called when the plugin page is loaded
+                 */                
                 add_action( 'load-'.$nds_hook_suffix, [ $this, 'nds_screen_options' ] );
         }
         
         /**
         * Screen options
+        *
+        * Callback for the load-($page_hook_suffix)
+        * Called when the plugin page is loaded
         * 
         * @since    1.0.0
         */

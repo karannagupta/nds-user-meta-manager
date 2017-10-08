@@ -32,7 +32,9 @@ use Nds_User_Meta_Manager\Inc\Libraries;
                 <?php echo $dropdown_html; ?>
             </div>
             <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
-    <?php    
+			<br>
+			<a href="<?php echo esc_url( add_query_arg( array( 'page' => wp_unslash( $_REQUEST['page'] ) ) , admin_url( 'users.php' ) ) ); ?>"><?php _e( 'Back', $this->plugin_text_domain ) ?></a>		
+<?php 
     }
     else {  
     ?>

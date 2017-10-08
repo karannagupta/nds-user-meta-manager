@@ -7,7 +7,10 @@
             echo '<p">'. $key . ': ' . $v . '</p>';
         }
         echo '</div>';
-    }
+?>
+		<a href="<?php echo esc_url( add_query_arg( array( 'page' => wp_unslash( $_REQUEST['page'] ) ) , admin_url( 'users.php' ) ) ); ?>"><?php _e( 'Back', $this->plugin_text_domain ) ?></a>		
+<?php
+	}
     else {  
     ?>
         <p> <?php __("You are not authorized to perform this operation.", $plugin_name) ?> </p>

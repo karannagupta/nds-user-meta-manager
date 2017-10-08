@@ -27,7 +27,10 @@ use Nds_User_Meta_Manager\Inc\Libraries;
                 <input id="<?php echo $plugin_name; ?>-user_meta_value" type="text" name="<?php echo "nds"; ?>[user_meta_value]" value="" placeholder="<?php _e('Meta Value', $plugin_name);?>"/><br />
             </div>                 
             <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
-    <?php    
+			
+			<br>
+			<a href="<?php echo esc_url( add_query_arg( array( 'page' => wp_unslash( $_REQUEST['page'] ) ) , admin_url( 'users.php' ) ) ); ?>"><?php _e( 'Back', $this->plugin_text_domain ) ?></a>		
+<?php
     }
     else {  
     ?>

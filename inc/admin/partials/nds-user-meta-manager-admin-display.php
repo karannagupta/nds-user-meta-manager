@@ -11,7 +11,7 @@
         <div id="nds-list-table">
             <div id="nds-post-body">                                                                             
                 <?php
-                    $this->user_list_obj->prepare_items();
+                    $this->user_list_obj->prepare_items();					
                     $this->user_list_obj->display(); 
                 ?>                                         
             </div>                
