@@ -1,6 +1,7 @@
 <?php
 
 namespace Nds_User_Meta_Manager\Inc\Core;
+use Nds_User_Meta_Manager as NS;
 use Nds_User_Meta_Manager\Inc\Admin as Admin;
 use Nds_User_Meta_Manager\Inc\Frontend as Frontend;
 
@@ -41,11 +42,22 @@ class Init {
 	 */
 	protected $version;      
 	
-        // define the core functionality of the plugin.		 
+	/**
+	 * The text domain of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $version    The current version of the plugin.
+	 */
+	protected $plugin_text_domain;	
+	
+    // define the core functionality of the plugin.		 
 	public function __construct() {
 
-		$this->plugin_name = 'nds-user-meta-manager';
-		$this->version = '1.0.0';
+		$this->plugin_name = NS\PLUGIN_NAME;
+		$this->version = NS\PLUGIN_VERSION;
+				$this->plugin_basename = NS\PLUGIN_BASENAME;
+				$this->plugin_text_domain = NS\PLUGIN_TEXT_DOMAIN;
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -79,7 +91,7 @@ class Init {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Internationalization_i18n();
+		$plugin_i18n = new Internationalization_i18n( $this->plugin_text_domain );
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -93,7 +105,7 @@ class Init {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Admin\Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Admin\Admin( $this->get_plugin_name(), $this->get_version(), $this->get_plugin_text_domain() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );     
@@ -126,7 +138,7 @@ class Init {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Frontend\Frontend( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Frontend\Frontend( $this->get_plugin_name(), $this->get_version(), $this->get_plugin_text_domain() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -165,5 +177,15 @@ class Init {
 	public function get_version() {
 		return $this->version;
 	}
+	
+	/**
+	 * Retrieve the text domain of the plugin.
+	 *
+	 * @since     1.0.0
+	 * @return    string    The text domain of the plugin.
+	 */
+	public function get_plugin_text_domain() {
+		return $this->plugin_text_domain;
+	}		
 
 }

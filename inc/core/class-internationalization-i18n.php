@@ -15,7 +15,21 @@ namespace Nds_User_Meta_Manager\Inc\Core;
  */
 class Internationalization_i18n {
 
+	private $text_domain;
 
+	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    1.0.0
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
+	 */
+	public function __construct( $plugin_text_domain ) {
+
+		$this->text_domain = $plugin_text_domain;
+
+	}
+	
 	/**
 	 * Load the plugin text domain for translation.
 	 *
@@ -24,7 +38,7 @@ class Internationalization_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'nds-user-meta-manager',
+			$this->text_domain,
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

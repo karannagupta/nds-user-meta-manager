@@ -144,7 +144,7 @@ class User_List_Table extends Libraries\WP_List_Table  {
 	 * @return void
 	 */
 	public function no_items() {
-		_e( 'No users avaliable.', $this->plugin_text_domain );
+		_e( 'No Users Found.', $this->plugin_text_domain );
 	}	
 	
 	/*
@@ -303,7 +303,7 @@ class User_List_Table extends Libraries\WP_List_Table  {
 		 * 		    
 		 */
 		 $actions = array(
-			 'bulk-download' => 'Download Usermeta'
+			 'bulk-download' => 'Download (Coming Soon)'
 		 );
 
 		 return $actions;
@@ -362,6 +362,26 @@ class User_List_Table extends Libraries\WP_List_Table  {
 				$this->nds_delete_user_meta( absint( $_GET['nds_user']), $this->plugin_text_domain );      
 				$this->graceful_exit();
 			}
+		}
+			
+		// check for table bulk actions
+		if ( ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'bulk-download' ) || ( isset( $_REQUEST['action2'] ) && $_REQUEST['action2'] === 'bulk-download' ) ) {
+			
+			$nonce = wp_unslash( $_REQUEST['_wpnonce'] );
+			$bulk_user_ids = $_REQUEST['users'];
+			// verify the nonce.
+			/*
+			 * Note: the nonce field is set by the parent class
+			 * wp_nonce_field( 'bulk-' . $this->_args['plural'] );
+			 * 
+			 */
+			if ( ! wp_verify_nonce( $nonce, 'bulk-users' ) ) {
+				$this->invalid_nonce_redirect();
+			}
+			else {
+				include_once( 'partials/nds-user-meta-manager-admin-meta-bulk-actions.php' );
+				$this->graceful_exit();
+			}		
 		}				
 		
 	}

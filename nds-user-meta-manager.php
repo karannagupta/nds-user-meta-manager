@@ -30,11 +30,20 @@ if ( ! defined( 'WPINC' ) ) {
  * Define Constants
  */
 
-define( 'PLUGIN_NAME_DIR', plugin_dir_path( __FILE__ ) );
+define( __NAMESPACE__ . '\NS', __NAMESPACE__ . '\\' );
 
-define( 'PLUGIN_NAME_URL', plugin_dir_url( __FILE__ ) );
+define( NS . 'PLUGIN_NAME', 'nds-user-meta-manager' );
 
-define( 'PLUGIN_NAME_BASENAME', plugin_basename( __FILE__ ) );
+define( NS . 'PLUGIN_VERSION', '1.0.0' );
+
+define( NS . 'PLUGIN_NAME_DIR', plugin_dir_path( __FILE__ ) );
+
+define( NS . 'PLUGIN_NAME_URL', plugin_dir_url( __FILE__ ) );
+
+define( NS . 'PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+
+define( NS . 'PLUGIN_TEXT_DOMAIN', 'nds-user-meta-manager' );
+
 
 /**
  * Autoload Classes
@@ -103,7 +112,7 @@ function nds_user_meta_manager() {
         return Nds_User_Meta_Manager::init();
 }
 
-$min_php = '5.3.0';
+$min_php = '5.6.0';
 
 // Check the minimum required PHP version and run the plugin.
 if ( version_compare( PHP_VERSION, $min_php, '>=' ) ) {

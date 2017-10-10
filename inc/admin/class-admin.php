@@ -44,6 +44,15 @@ class Admin implements Libraries\Assets_Interface{
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+	
+	/**
+	 * The text domain of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_text_domain    The text domain of this plugin.
+	 */
+	private $plugin_text_domain;	
         
         /**
 	 * WP_List_Table object
@@ -72,10 +81,11 @@ class Admin implements Libraries\Assets_Interface{
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( $plugin_name, $version, $plugin_text_domain ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;               
+		$this->version = $version;
+		$this->plugin_text_domain = $plugin_text_domain;
                 
                 //instantiate the nonce class
                 $this->nds_nonce = new Libraries\Nonce();                                
@@ -166,7 +176,7 @@ class Admin implements Libraries\Assets_Interface{
                 add_screen_option( $option, $args );
                 
                 //instantiate the NDS_User_List
-                $this->user_list_obj = new User_List_Table($this->plugin_name, $this->version);
+                $this->user_list_obj = new User_List_Table( $this->plugin_text_domain );
         }       
         
         /**
@@ -175,7 +185,12 @@ class Admin implements Libraries\Assets_Interface{
          * @since    1.0.0
          */
         public function nds_plugin_admin_page_view() {
-                 include_once( 'partials/nds-user-meta-manager-admin-display.php' );
+			
+				// query, filter, and sort the data
+				$this->user_list_obj->prepare_items();
+				
+				// render the Table
+                include_once( 'partials/nds-user-meta-manager-admin-display.php' );
         }
         
         /**

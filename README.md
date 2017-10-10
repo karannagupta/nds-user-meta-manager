@@ -3,9 +3,12 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Purpose
-The main purpose of this plugin is to learn WordPress plugin development as well as share knowledge of the WordPress API. 
+The main purpose of this plugin is to explore WordPress plugin development and the WordPress API. 
 The plugin was created using Object Oriented Constructs, and tested using PHPUnit. 
 One can install the plugin using a composer package or manually.
+
+## PHP Version
+5.6.0 or greater
 
 ## Description 
 A simple admin plugin demo to manage user meta using object oriented constructs. 
